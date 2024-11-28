@@ -1,0 +1,32 @@
+<!-- file_manager/templates/file_manager/home.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpenVPNFetcher</title>
+</head>
+<body>
+    <h1>OpenVPN File Fetcher</h1>
+    <form action="" method="get">
+        <input type="text" name="search" placeholder="Search...">
+        <input type="submit" value="Search">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>File Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for file in files %}
+                <tr>
+                    <td>{{ file }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form action="/download/" method="post">
+        {% csrf_token %}
+        <button type="submit">Download Selected Files</button>
+    </form>
+</body>
+</html>
